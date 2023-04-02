@@ -1,6 +1,6 @@
-{% load static %} 
-<link rel="stylesheet" href="{% static 'style.css' %}"> 
-<link rel="stylesheet" href="{% static 'prism.css' %}"> 
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'prism.css' %}">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script src="{% static 'prism.js' %}"></script>
@@ -10,44 +10,69 @@
 <head>
     <meta charset="UTF-8">
     <title>codingSytle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div id="logo">
-        <img class="logo_img" src="{% static 'logo.png' %}" alt="logo"> 
-    </div>
-    <div id="top_bar">
-    </div>
-    <P style="position: relative; font-size: 20px; left: 370px; top: 30px">
-        Paste your code below 
-    </P>
-<form action="" method="post" style="position:absolute;top:100px;color:black;font-size:35px;left: 15%">
-    {% csrf_token %}
-    <p>
-        <textarea id="editing" spellcheck="false" oninput="update(this.value);" placeholder="Enter code here..." ></textarea>
-        <pre id="highlighting" aria-hidden="true"> 
-            <code class="language-c" id="highlighting-content"></code>
-        </pre>
-        <script> 
-            document.querySelector('textarea').addEventListener("keydown", function (e) {
-                if (e.key == "Tab") {
-                    e.preventDefault();
-                    let start = this.selectionStart;
-                    let end = this.selectionEnd;
-                    this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
-                    this.selectionStart = this.selectionEnd = start + 1;
-                }
-            });
-        </script>
-    </p>
-    <p> 
-        {{ code }}
-    </p>
-</form>
-<input class="check" type="submit" value="check">
-<textarea id="return" readonly="true" spellcheck="false" placeholder="waiting for input..."></textarea>
-<pre id="highlighting_2" aria-hidden="true"> 
-    <code class="language-c" id="highlighting-content"></code>
-</pre>
-<p style="position:absolute ; font-size:20px; left:1150px; top: 180px;">Result</p>
+<div id="logo">
+    <img class="logo_img" src="{% static 'logo.png' %}" alt="logo">
+</div>
+<div id="top_bar">
+</div>
+<div class="container-fluid mt-3">
+    <form action="" method="post"
+          style="position:absolute;top:20%;color:black;font-size:35px;left: 15%;width: 80%;height: 80%">
+        {% csrf_token %}
+        <div class="row">
+            <P style="text-align: center;font-size: 30px">
+                Paste your code below
+            </P>
+            <div class="col p-2">
+                <p>
+                    <textarea type="text" name="code" style="width: 80%; height: 300px;left: 5%">{{ code }}</textarea>
+                </p>
+                <div style="position:relative;width: 400px;text-align: center">
+                    <input style="width: 450px;border-radius: 25px;" type="submit" value="check">
+                </div>
+            </div>
+            <div class="col p-2">
+                <p>
+                    <textarea style="width: 80%; height: 300px">{{ clean }}</textarea>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>
+{#<form action="" method="post" style="position:absolute;top:100px;color:black;font-size:35px;left: 15%">#}
+{#    {% csrf_token %}#}
+{#    <p>#}
+{#        <textarea id="editing" spellcheck="false" oninput="update(this.value);"#}
+{#                  placeholder="Enter code here..." name="code">{{ code }}</textarea>#}
+{#    </p>#}
+{#    <pre id="highlighting" aria-hidden="true">#}
+{#            <code class="language-c" id="highlighting-content"></code>#}
+{#        </pre>#}
+{#    <script>#}
+{#        document.querySelector('textarea').addEventListener("keydown", function (e) {#}
+{#            if (e.key == "Tab") {#}
+{#                e.preventDefault();#}
+{#                let start = this.selectionStart;#}
+{#                let end = this.selectionEnd;#}
+{#                this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);#}
+{#                this.selectionStart = this.selectionEnd = start + 1;#}
+{#            }#}
+{#        });#}
+{#    </script>#}
+{#    <input class="check" type="submit" value="check">#}
+{#    <p>#}
+{#        <textarea id="return" readonly="true" spellcheck="false"#}
+{#        >{{ clean }}</textarea>#}
+{#    <pre id="highlighting_2" aria-hidden="true">#}
+{#    <code class="language-c" id="highlighting-content"></code>#}
+{#        </p>#}
+{#</pre>#}
+{#    <p style="position:absolute ; font-size:20px; left:1150px; top: 180px;">Result</p>#}
+{#</form>#}
 </body>
 </html>

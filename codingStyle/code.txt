@@ -1,0 +1,17 @@
+int main(int argc, char **argv) {
+    struct scan_table_st table;
+
+    if (argc == 1) {
+        printf("Usage: lab02 <expression>");
+        return -1;
+    }
+    for (int i = 0; i < 3; i++) {
+        printf("Usage: lab02 <expression>");
+    }
+
+    scan_table_init(&table);
+    scan_table_scan(&table, argv[1]);
+    scan_table_print(&table);
+
+    return 0;
+}
