@@ -1,0 +1,146 @@
+#editing, #highlighting {
+    /* Both elements need the same text and space styling so they are directly on top of each other */
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    width: 500px;
+    height: 500px;
+}
+
+#return, #highlighting_2 { 
+    margin:10px;
+    padding: 10px; 
+    border:0; 
+    width:500px;
+    height:500px; 
+}
+
+#editing, #highlighting, #highlighting * {
+    /* Also add text styles to highlighing tokens */
+    font-size: 15pt;
+    font-family: monospace;
+    line-height: 20pt;
+    tab-size: 2;
+}
+
+#return, #highlighting_2, #highlighting_2 * { 
+    font-size: 15pt; 
+    font-family: monospace; 
+    line-height: 20pt;
+    tab-size: 2;
+}
+  
+  
+#editing, #highlighting {
+    /* In the same place */
+    position: absolute;
+    top: 120px;
+    left: 50px;
+}
+
+#return, #highlighting_2 { 
+    position:absolute; 
+    top:220px; 
+    left: 1100px; 
+}
+  
+  
+  /* Move the textarea in front of the result */
+  
+#editing {
+    z-index: 1;
+}
+
+#return { 
+    z-index: 1; 
+}
+
+#highlighting {
+    z-index: 0;
+}
+
+#highlighting_2 { 
+    z-index: 0;
+}
+  
+  
+  /* Make textarea almost completely transparent */
+  
+#editing {
+    color: transparent;
+    background: transparent;
+    caret-color: white; /* Or choose your favourite color */
+}
+
+#return { 
+    color: transparent; 
+    background: transparent; 
+    caret-color: white;
+}
+
+
+  
+  /* Can be scrolled */
+#editing, #highlighting {
+    overflow: auto;
+    white-space: nowrap; /* Allows textarea to scroll horizontally */
+}
+
+#return, #highlighting_2 { 
+    overflow: auto; 
+    white-space: nowrap;  
+}
+  
+
+  /* Paragraphs; First Image */
+  * {
+    font-family: "Fira Code", monospace;
+  }
+  p code {
+    border-radius: 2px;
+    background-color: #eee;
+    color: #111;
+  }
+
+textarea { 
+    resize: none; 
+    outline: none; 
+}
+
+#top_bar { 
+    box-sizing: border-box;
+    height:140px; 
+    width: 100%;
+    padding:0 12px; 
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+    flex-shrink:0; 
+    border-bottom: 1px solid transparent;
+    background-color: #accaa1;
+}
+
+#logo{ 
+    position:absolute; 
+    top: 30px; 
+    left:50px;
+    border-radius: 35%;
+    width: 10px; 
+    height: 10px; 
+}
+
+.logo_img{ 
+    border-radius: 35%;
+    width: 250px; 
+    height: 200px; 
+}
+
+
+.check { 
+    position:absolute; 
+    left:42%;
+    top: 800px;
+    border-radius: 30px;
+    width: 350px;
+    text-align: center;
+}
